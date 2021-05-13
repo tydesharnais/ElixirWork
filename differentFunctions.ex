@@ -24,6 +24,10 @@ defmodule M do
     #check if value is inside of a list
     IO.puts 6 in list3
 
+    #Mapping values, creating declaring new lists and looping 
+    list5 = Enum.map(list3, fn x -> x * 2 end)
+    loop(list5)
+
     #Another headsplitter
     [head | tail] = list3
     IO.puts "Head: #{head}"
