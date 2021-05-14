@@ -2,9 +2,21 @@ defmodule M do
 
   def main do
     #Anonymous function
-    add = fn a,b -> a + b end
+    add = fn(a,b) -> a + b end
     IO.puts(add.(1,2))
     is_function(add)
+    IO.puts factorial(5)
+  end
+
+  #Fun with factorials!
+
+  def factorial(number) do
+    if number <= 1 do
+      1
+    else
+      result = number * factorial(number - 1)
+      result
+    end
   end
 
   def lists do
@@ -24,7 +36,7 @@ defmodule M do
     #check if value is inside of a list
     IO.puts 6 in list3
 
-    #Mapping values, creating declaring new lists and looping 
+    #Mapping values, creating declaring new lists and looping
     list5 = Enum.map(list3, fn x -> x * 2 end)
     loop(list5)
 
@@ -35,7 +47,6 @@ defmodule M do
     IO.inspect tail
 
     #List enumeration
-
     #Using Recursion
     loop(list1)
 
@@ -64,6 +75,18 @@ defmodule M do
     {weight, height, name} = {175, 6, "Tyler"}
     IO.puts "Weight: #{weight} Height: #{height} Name: #{name}"
   end
+
+  #Calls big sum to split head and tails and continues to add to sum until bigSum is empty and :do 0
+  def recursiveSum do
+    randomList = [1,2,3,4,5,6,7,8,10,30,40,132901489,12498124,124124]
+    bigSum(randomList)
+  end
+
+  def bigSum([head | tail]) do
+    sum = head + bigSum(tail)
+  end
+
+  def bigSum([]), do: 0
 
   #Recusive Loop call
   def loop([head | tail]) do
